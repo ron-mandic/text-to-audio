@@ -24,11 +24,11 @@
 </script>
 
 <div
-	class="fixed bottom-4 left-1/2 mx-2 grid w-full max-w-[480px] -translate-x-[calc(50%+0.5rem)] gap-x-6 rounded-full border-2 border-marsha-foreground/10 bg-marsha/30 px-3 py-3 text-marsha-foreground backdrop-blur-2xl"
+	class="fixed bottom-4 left-1/2 mx-2 grid w-full max-w-[480px] -translate-x-[calc(50%+0.5rem)] gap-x-6 rounded-full border-2 border-border px-3 py-3 text-foreground shadow-sm backdrop-blur-2xl"
 	style="grid-template-columns: auto 1fr auto;"
 >
 	<button
-		class="relative block h-10 w-10 cursor-pointer rounded-full bg-marsha-foreground"
+		class="relative block h-10 w-10 cursor-pointer rounded-full bg-foreground"
 		aria-label={paused ? 'play' : 'pause'}
 		onclick={() => (paused = !paused)}
 	>
@@ -37,14 +37,14 @@
 				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
 				transition:scale={{ duration: 200, delay: 225 }}
 			>
-				<Play class="scale-[.8] fill-marsha text-marsha" />
+				<Play class="scale-[.8] fill-background text-background" />
 			</span>
 		{:else}
 			<span
 				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
 				transition:scale={{ duration: 200, delay: 225 }}
 			>
-				<Pause class="fill-marsha text-marsha" />
+				<Pause class="fill-background text-background" />
 			</span>
 		{/if}
 	</button>
@@ -75,10 +75,18 @@
 		<div
 			class={[
 				{
-					'h-2 w-full cursor-grab rounded-full bg-marsha-foreground/20': true,
+					'h-2 w-full cursor-grab overflow-hidden rounded-full bg-foreground/10': true,
 					'cursor-grabbing': grabbing
 				}
 			]}
+			onwheel={(e: WheelEvent) => {
+				e.preventDefault();
+				let wheelDiff = e.deltaY;
+
+				time += wheelDiff / 2;
+				if (time < 0) time = 0;
+				if (time > duration) time = duration;
+			}}
 			onpointerdown={(e: PointerEvent) => {
 				const div = e.currentTarget as HTMLDivElement;
 
@@ -108,19 +116,16 @@
 				);
 			}}
 		>
-			<div
-				class="h-2 rounded-full bg-marsha-foreground"
-				style="width: {(time / duration) * 100}%"
-			></div>
+			<div class="h-2 rounded-full bg-foreground" style="width: {(time / duration) * 100}%"></div>
 		</div>
 		<span class="select-none font-mono text-sm">{duration ? format(duration) : '--:--'}</span>
 	</div>
 
 	<button
-		class="relative block h-10 w-10 cursor-pointer rounded-full bg-[#FFB400]/20 transition-colors hover:border-2 hover:border-[#B27E00]"
+		class="relative block h-10 w-10 cursor-pointer rounded-full bg-secondary-dimmed transition-colors hover:border-2 hover:border-secondary-foreground-dimmed"
 	>
 		<span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
-			<Download class="scale-75 text-[#B27E00]" style="stroke-width: 3;" />
+			<Download class="scale-75 text-secondary-foreground-dimmed" style="stroke-width: 3;" />
 		</span>
 	</button>
 </div>

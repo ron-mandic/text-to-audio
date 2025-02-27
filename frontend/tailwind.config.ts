@@ -20,6 +20,9 @@ const config: Config = {
 				border: 'hsl(var(--border) / <alpha-value>)',
 				input: 'hsl(var(--input) / <alpha-value>)',
 				ring: 'hsl(var(--ring) / <alpha-value>)',
+				bark: {
+					DEFAULT: 'hsl(var(--bark-background) / <alpha-value>)'
+				},
 				background: 'hsl(var(--background) / <alpha-value>)',
 				foreground: 'hsl(var(--foreground) / <alpha-value>)',
 				primary: {
@@ -28,11 +31,15 @@ const config: Config = {
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
-					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
+					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
+					dimmed: 'hsl(var(--secondary-dimmed) / <alpha-value>)',
+					'foreground-dimmed': 'hsl(var(--secondary-foreground-dimmed) / <alpha-value>)'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
-					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
+					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
+					dimmed: 'hsl(var(--destructive-dimmed) / <alpha-value>)',
+					'foreground-dimmed': 'hsl(var(--destructive-foreground-dimmed) / <alpha-value>)'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
@@ -59,16 +66,6 @@ const config: Config = {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				marsha: {
-					DEFAULT: 'hsl(var(--marsha-background))',
-					foreground: 'hsl(var(--marsha-foreground))',
-					primary: 'hsl(var(--marsha-primary))',
-					'primary-foreground': 'hsl(var(--marsha-primary-foreground))',
-					accent: 'hsl(var(--marsha-accent))',
-					'accent-foreground': 'hsl(var(--marsha-accent-foreground))',
-					border: 'hsl(var(--marsha-border))',
-					ring: 'hsl(var(--marsha-ring))'
 				}
 			},
 			borderRadius: {
@@ -79,7 +76,8 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans],
-				mono: ['JetBrains Mono', ...fontFamily.mono]
+				mono: ['JetBrains Mono', ...fontFamily.mono],
+				display: ['ShadowHand', ...fontFamily.sans]
 			},
 			keyframes: {
 				'accordion-down': {
@@ -93,12 +91,23 @@ const config: Config = {
 				'caret-blink': {
 					'0%,70%,100%': { opacity: '1' },
 					'20%,50%': { opacity: '0' }
+				},
+				jello: {
+					'0%, 11.1%, 100%': { transform: 'translate3d(0, 0, 0)' },
+					'22.2%': { transform: 'skewX(-12.5deg) skewY(-12.5deg)' },
+					'33.3%': { transform: 'skewX(6.25deg) skewY(6.25deg)' },
+					'44.4%': { transform: 'skewX(-3.125deg) skewY(-3.125deg)' },
+					'55.5%': { transform: 'skewX(1.5625deg) skewY(1.5625deg)' },
+					'66.6%': { transform: 'skewX(-0.78125deg) skewY(-0.78125deg)' },
+					'77.7%': { transform: 'skewX(0.390625deg) skewY(0.390625deg)' },
+					'88.8%': { transform: 'skewX(-0.1953125deg) skewY(-0.1953125deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'caret-blink': 'caret-blink 1.25s ease-out infinite'
+				'caret-blink': 'caret-blink 1.25s ease-out infinite',
+				jello: 'jello 0.9s infinite'
 			}
 		}
 	},

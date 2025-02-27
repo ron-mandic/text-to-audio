@@ -2,41 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'ShadowHand';
+	src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
+}
+
 @layer base {
 	:root,
-	:root.dark {
-		--background: 60 52% 2%;
-		--foreground: 0 0% 3.9%;
-		--muted: 0 0% 96.1%;
+	.dark {
+		--background: 60 52% 99%;
+		--foreground: 144 5% 18%;
+
+		--muted: 80 6% 91%;
 		--muted-foreground: 0 0% 45.1%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
+
+		--popover: 60 52% 99%;
+		--popover-foreground: 144 5% 18%;
+
+		--card: 60 52% 99%;
+		--card-foreground: 144 5% 18%;
+
 		--border: 0 0% 89.8%;
 		--input: 0 0% 89.8%;
-		--primary: 0 0% 9%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 96.1%;
-		--secondary-foreground: 0 0% 9%;
-		--accent: 0 0% 96.1%;
-		--accent-foreground: 0 0% 9%;
-		--destructive: 0 72.2% 50.6%;
-		--destructive-foreground: 0 0% 98%;
-		--ring: 0 0% 3.9%;
-		--radius: 0.5rem;
 
-		--sidebar-background: 0 0% 98%;
-		--sidebar-foreground: 240 5.3% 26.1%;
-		--sidebar-primary: 240 5.9% 10%;
-		--sidebar-primary-foreground: 0 0% 98%;
-		--sidebar-accent: 240 4.8% 95.9%;
-		--sidebar-accent-foreground: 240 5.9% 10%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
+		--primary: 144 5% 18%;
+		--primary-foreground: 60 52% 99%;
 
-		--marsha-background: 60 52% 94%;
-		--marsha-foreground: 144 5% 18%;
+		--secondary: 42 100% 50%;
+		--secondary-dimmed: 37 100% 91%;
+		--secondary-foreground: 42 100% 98%;
+		--secondary-foreground-dimmed: 42 100% 35%;
+
+		--accent: 42 100% 50%;
+		--accent-foreground: 42 100% 98%;
+
+		--destructive: 0 80% 50%;
+		--destructive-dimmed: 3 78% 89%;
+		--destructive-foreground: 0 0% 100%;
+		--destructive-foreground-dimmed: 0 100% 35%;
+
+		--ring: 144 5% 18%;
+		--radius: 0.675rem;
+
+		--sidebar-background: 60 52% 99%;
+		--sidebar-foreground: 144 5% 18%;
+		--sidebar-primary: 144 5% 18%;
+		--sidebar-primary-foreground: 60 52% 99%;
+		--sidebar-accent: 42 100% 50%;
+		--sidebar-accent-foreground: 42 100% 98%;
+		--sidebar-border: 0 0% 89.8%;
+		--sidebar-ring: 144 5% 18%;
+
+		--bark-background: 60 52% 2%;
 	}
 }
 
@@ -44,8 +61,11 @@
 	* {
 		@apply m-0 box-border border-border p-0;
 	}
+	html,
 	body {
-		@apply touch-none bg-background p-2 text-foreground;
-		overscroll-behavior: none;
+		background: hsl(60, 52%, 2%);
+	}
+	body {
+		@apply touch-none overflow-x-hidden overscroll-none p-2 text-foreground;
 	}
 }

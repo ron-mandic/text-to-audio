@@ -15,7 +15,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'@/*': './src/lib/*',
-			'@features/*': './src/features/*'
+			'@features/*': './src/features/*',
+			'@ui/*': './src/ui/*'
 		}
 	},
 
